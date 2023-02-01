@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-starter';
+  title = 'Mon Application';
+  backgroundColor = '#0c2831';
+
+
+  constructor() {
+    // setTimeout(() => {
+    //   this.title = 'Mon Application - Mise à Jour';
+    // }, 3000);
+  }
+
+  onBackgroundChange(color: string) {
+    this.backgroundColor = color;
+  }
 }

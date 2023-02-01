@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('assets/bootstrap.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+    --header-font-size: 1.4rem;
+    --header-color: rgb(116, 35, 35);
+}

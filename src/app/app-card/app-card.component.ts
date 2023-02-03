@@ -3,7 +3,16 @@ import { Component, Input, OnDestroy } from '@angular/core';
 @Component({
     selector: 'app-card',
     templateUrl: './app-card.component.html',
+    // template: `
+    //   <p>
+
+    //   </p>
+    // `,
     styleUrls: ['./app-card.scss']
+    // styles: [
+    //   ``,
+    //   ``
+    // ]
 })
 export class AppCardComponent implements OnDestroy{
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 const COLORS = ['red', 'purple', '#000'];
 
@@ -19,19 +19,11 @@ export class TopbarComponent implements OnInit {
   @Input() color = '#fff';
 
   // Evénemenent de notification du composant parent
-  @Output() backgroundColorChange = new EventEmitter<string>();
+  // @Output() backgroundColorChange = new EventEmitter<string>();
 
-  clickCount = 0;
+  // clickCount = 0;
 
   ngOnInit(): void {
-    document.getElementById('button')?.addEventListener('click', () => {
-      // this.backgroundColor = 'red';
-      this.backgroundColorChange.emit(
-        COLORS[Math.floor(Math.random() * (2 - 0) + 0)]
-      );
-
-      this.clickCount += 1;
-    });
     
   }
 }

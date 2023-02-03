@@ -1,0 +1,14 @@
+.btn.btn-primary  {
+    line-height: 2rem;
+    display: inline-block;
+}
+
+.btn.btn-primary, .btn.btn-primary:hover {
+    color: var(--card-button-color, #fff);
+
+}
+
+app-card {
+    margin: 16px;
+    width: 640px;
+}

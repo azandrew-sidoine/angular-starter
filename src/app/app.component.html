@@ -1,5 +1,8 @@
-<app-topbar (backgroundColorChange)="backgroundColor = $event" color="white" [backgroundColor]="backgroundColor" [title]="title"></app-topbar>
-
-<pre>Parent: {{backgroundColor}}</pre>
-
-<button class="btn btn-primary" id="button" type="button">Change background</button>
+<app-topbar color="white" [backgroundColor]="backgroundColor" [title]="title">
+</app-topbar>
+<app-card-container>
+    <app-card slot="card" title="Todos" [content]="cardContent">
+        <button type="button" (click)="onCardClicked($event)" class="btn btn-primary">SOUMETTRE</button>
+    </app-card>
+    <p class="paragraph">Je suis un autre paragraphe après la carte!!!</p>
+</app-card-container>

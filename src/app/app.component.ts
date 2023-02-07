@@ -8,7 +8,7 @@ import {
   OnInit
 } from '@angular/core';
 
-const COLORS = ['red', 'purple', '#000'];
+const COLORS = ['red', 'purple', 'pink', 'black', 'green'];
 
 @Component({
   selector: 'app-root',
@@ -24,13 +24,16 @@ export class AppComponent
     AfterViewChecked,
     OnDestroy
 {
-  title = 'Mon Application';
-  backgroundColor = '#0c2831';
-  // showCard = true;
-
-  cardTitle = 'Todos';
-  cardContent =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laboru numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!';
+  state = {
+    titleClass: {} as Record<string, boolean>,
+    titleStyle: {} as Record<string, string>,
+    title: 'Mon Application',
+    backgroundColor: '#0c2831',
+    cardTitleClass: 'bottom-right',
+    cardTitle: 'Todos',
+    cardContent:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laboru numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!',
+  };
 
   constructor() {
     // setTimeout(() => {
@@ -66,11 +69,43 @@ export class AppComponent
   }
 
   onBackgroundChange(color: string) {
-    this.backgroundColor = color;
+    // this.state.backgroundColor = color;
+    this.setState({ backgroundColor: color });
+    // this.setState((state) => ({...state, backgroundColor: color}));
   }
 
   onCardClicked(event: Event) {
-    this.backgroundColor = COLORS[Math.floor(Math.random() * (2 - 0) + 0)];
+    const color = COLORS[Math.floor(Math.random() * (COLORS.length - 0) + 0)];
+    this.setState({
+      backgroundColor: color,
+      titleClass: { [`title-${color}`]: true },
+      titleStyle: { color },
+    });
+
+    // this.setState((state) => ({
+    //   ...state,
+    //   backgroundColor: COLORS[Math.floor(Math.random() * (2 - 0) + 0)],
+    //   titleClass: {...state.titleClass, backgroundHeader: !state.titleClass.backgroundHeader}
+    // }));
+    console.log(this.state);
+    // this.backgroundColor = COLORS[Math.floor(Math.random() * (2 - 0) + 0)];
     event.preventDefault();
+  }
+
+  setState(
+    state:
+      | Partial<typeof this.state>
+      | ((state: typeof this.state) => typeof this.state)
+  ) {
+    if (typeof state === 'function') {
+      this.state = state(this.state);
+    }
+    // a ne jamais faire en angular
+    // this.state.backgroundColor = state.backgroundColor;
+
+    // Faites plutôt ceci : Qui est une syntax qui modifie la référence de l'objet state
+    this.state = { ...this.state, ...state }; // déréférencement d'objet
+    // const myobj = {name: 'John', age: 23} -> const {name, age} =  {...myobj};
+    // const myarr = [1,2,3,4]  -> const [a,b,c,d] = [...myarr];
   }
 }

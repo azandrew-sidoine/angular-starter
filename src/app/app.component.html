@@ -1,8 +1,10 @@
-<app-topbar color="white" [backgroundColor]="backgroundColor" [title]="title">
+<app-topbar color="white" [backgroundColor]="state.backgroundColor" [title]="state.title">
 </app-topbar>
 <app-card-container>
-    <app-card slot="card" title="Todos" [content]="cardContent">
-        <button type="button" (click)="onCardClicked($event)" class="btn btn-primary">SOUMETTRE</button>
+    <app-card>
+        <h5  [ngStyle]="state.titleStyle" [ngClass]="state.titleClass" class="card-title">Todos</h5>
+        <p class="card-text">{{ state.cardContent }}</p>
+        <button [disabled]="" type="button" (click)="onCardClicked($event)" class="btn btn-primary">SOUMETTRE</button>
     </app-card>
     <p class="paragraph">Je suis un autre paragraphe après la carte!!!</p>
 </app-card-container>

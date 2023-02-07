@@ -12,3 +12,35 @@ app-card {
     margin: 16px;
     width: 640px;
 }
+
+.card-title {
+    font-size: 1.5rem;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.card-text {
+    margin: 1.2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.title-purple {
+    color: purple;
+}
+
+.title-red {
+    color: red;
+}
+
+.title-pink {
+    color: pink;
+}
+
+.title-green {
+    color: green;
+}
+
+.title-black {
+    color: black;
+}

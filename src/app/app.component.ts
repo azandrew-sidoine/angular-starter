@@ -33,6 +33,25 @@ export class AppComponent
     cardTitle: 'Todos',
     cardContent:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laboru numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!',
+    index: undefined as any as number,
+    users: [
+      {
+        name: 'John Doe',
+        grade: 'A',
+      },
+      {
+        name: 'Jack Mah',
+        grade: 'A+',
+      },
+      {
+        name: 'Roselyn',
+        grade: 'A',
+      },
+      {
+        name: 'Trevor',
+        grade: 'D',
+      },
+    ],
   };
 
   constructor() {
@@ -75,11 +94,13 @@ export class AppComponent
   }
 
   onCardClicked(event: Event) {
-    const color = COLORS[Math.floor(Math.random() * (COLORS.length - 0) + 0)];
+    const index = Math.floor(Math.random() * (COLORS.length - 0) + 0);
+    const color = COLORS[index];
     this.setState({
       backgroundColor: color,
       titleClass: { [`title-${color}`]: true },
       titleStyle: { color },
+      index,
     });
 
     // this.setState((state) => ({
@@ -87,7 +108,6 @@ export class AppComponent
     //   backgroundColor: COLORS[Math.floor(Math.random() * (2 - 0) + 0)],
     //   titleClass: {...state.titleClass, backgroundHeader: !state.titleClass.backgroundHeader}
     // }));
-    console.log(this.state);
     // this.backgroundColor = COLORS[Math.floor(Math.random() * (2 - 0) + 0)];
     event.preventDefault();
   }

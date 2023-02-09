@@ -2,9 +2,55 @@
 </app-topbar>
 <app-card-container>
     <app-card>
-        <h5  [ngStyle]="state.titleStyle" [ngClass]="state.titleClass" class="card-title">Todos</h5>
+        <h5 [ngStyle] [ngStyle]="state.titleStyle" [ngClass]="state.titleClass" class="card-title">Todos</h5>
         <p class="card-text">{{ state.cardContent }}</p>
         <button [disabled]="" type="button" (click)="onCardClicked($event)" class="btn btn-primary">SOUMETTRE</button>
     </app-card>
-    <p class="paragraph">Je suis un autre paragraphe après la carte!!!</p>
+</app-card-container>
+
+<app-card-container>
+    <h2>Directrives structurels</h2>
+    <h4>NgIf</h4>
+    <app-card [hidden]="state.index !== 0">
+        <p class="card-text">Card 1 content</p>
+    </app-card>
+    <app-card *ngIf="state.index === 1">
+        <p class="card-text">Card 2 content</p>
+    </app-card>
+    <app-card *ngIf="state.index === 2">
+        <p class="card-text">Card 3 content</p>
+    </app-card>
+    <app-card *ngIf="state.index === 3">
+        <p class="card-text">Card 4 content</p>
+    </app-card>
+    <app-card *ngIf="state.index === 4">
+        <p class="card-text">Card 5 content</p>
+    </app-card>
+    <br />
+    <h4>NgFor</h4>
+    <div [ngIf]="true">
+        <ng-container *ngTemplateOutlet="ngIfTemplate1; context: {implicit$ : {}}"></ng-container>
+        <ng-template #ngIfTemplate1 let-user>
+            <h5>{{user?.name}} Text <span class="badge bg-secondary bg-danger"
+                    [style]="'color: #fff;'">{{user?.grade}}</span></h5>
+        </ng-template>
+    </div>
+    <ng-container *ngIf="state.users?.length !== 0">
+        <ng-container *ngFor="let user of state.users">
+            <h5>{{user.name}}
+                <ng-container [ngSwitch]="user.grade">
+                    <ng-container *ngSwitchCase="'A+'">
+                        <span class="badge bg-secondary bg-success" [style]="'color: #fff;'">{{user.grade}}</span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'A'">
+                        <span class="badge bg-secondary bg-warning" [style]="'color: #fff;'">{{user.grade}}</span>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <span class="badge bg-secondary bg-danger" [style]="'color: #fff;'">{{user.grade}}</span>
+                    </ng-container>
+                </ng-container>
+            </h5>
+        </ng-container>
+    </ng-container>
+
 </app-card-container>

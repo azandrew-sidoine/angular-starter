@@ -1,7 +1,8 @@
 <app-topbar color="white" [backgroundColor]="state.backgroundColor" [title]="state.title">
 </app-topbar>
 <app-card-container>
-    <app-card [scale]="1.2">
+    <!--  -->
+    <app-card [title]="state.title" (click)="onCardClicked($event)" (titleChange)="onTitleChange($event)" [scale]="1.2">
         <h5 [ngStyle] [ngStyle]="state.titleStyle" [ngClass]="state.titleClass" (click)="incrementClickCount()" class="card-title">Todos</h5>
         <p *showIfClickEven="state.clickCount" (click)="incrementClickCount()" class="card-text">{{ state.cardContent }}</p>
         <button [scale]="1.1" [orientation]="'x'" [disabled]="" type="button" (click)="onCardClicked($event)"
@@ -9,7 +10,7 @@
     </app-card>
 </app-card-container>
 
-<app-card-container>
+<!-- <app-card-container>
     <h2>Directrives structurels</h2>
     <h4>NgIf</h4>
     <app-card [hidden]="state.index !== 0">
@@ -29,13 +30,6 @@
     </app-card>
     <br />
     <h4>NgFor</h4>
-    <!-- <div [ngIf]="true">
-        <ng-container *ngTemplateOutlet="ngIfTemplate1; context: {implicit$ : {}}"></ng-container>
-        <ng-template #ngIfTemplate1 let-user>
-            <h5>{{user?.name}} Text <span class="badge bg-secondary bg-danger"
-                    [style]="'color: #fff;'">{{user?.grade}}</span></h5>
-        </ng-template>
-    </div> -->
     <ng-container *ngIf="state.users?.length !== 0">
         <ng-container *ngFor="let user of state.users">
             <h5>{{user.name}}
@@ -54,4 +48,4 @@
         </ng-container>
     </ng-container>
 
-</app-card-container>
+</app-card-container> -->

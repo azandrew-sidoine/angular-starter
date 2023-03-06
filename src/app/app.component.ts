@@ -95,14 +95,15 @@ export class AppComponent
   }
 
   onCardClicked(event: Event) {
-    const index = Math.floor(Math.random() * (COLORS.length - 0) + 0);
-    const color = COLORS[index];
-    this.setState({
-      backgroundColor: color,
-      titleClass: { [`title-${color}`]: true },
-      titleStyle: { color },
-      index,
-    });
+    // window.alert('Hello World! I am clicked!');
+    // const index = Math.floor(Math.random() * (COLORS.length - 0) + 0);
+    // const color = COLORS[index];
+    // this.setState({
+    //   backgroundColor: color,
+    //   titleClass: { [`title-${color}`]: true },
+    //   titleStyle: { color },
+    //   index,
+    // });
 
     // this.setState((state) => ({
     //   ...state,
@@ -111,6 +112,10 @@ export class AppComponent
     // }));
     // this.backgroundColor = COLORS[Math.floor(Math.random() * (2 - 0) + 0)];
     event.preventDefault();
+  }
+
+  onTitleChange(title: string) {
+      this.setState({...this.state, title: title})
   }
 
   incrementClickCount(event?: Event) {

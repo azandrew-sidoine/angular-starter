@@ -25,6 +25,7 @@ export class AppComponent
     OnDestroy
 {
   state = {
+    clickCount: 0,
     titleClass: {} as Record<string, boolean>,
     titleStyle: {} as Record<string, string>,
     title: 'Mon Application',
@@ -112,19 +113,23 @@ export class AppComponent
     event.preventDefault();
   }
 
+  incrementClickCount(event?: Event) {
+    this.setState((state) => ({ ...state, clickCount: state.clickCount + 1 }));
+    event?.preventDefault();
+  }
+
   setState(
     state:
       | Partial<typeof this.state>
       | ((state: typeof this.state) => typeof this.state)
   ) {
-    if (typeof state === 'function') {
-      this.state = state(this.state);
-    }
     // a ne jamais faire en angular
     // this.state.backgroundColor = state.backgroundColor;
-
     // Faites plutôt ceci : Qui est une syntax qui modifie la référence de l'objet state
-    this.state = { ...this.state, ...state }; // déréférencement d'objet
+    this.state =
+      typeof state === 'function'
+        ? state(this.state)
+        : { ...this.state, ...state }; // déréférencement d'objet
     // const myobj = {name: 'John', age: 23} -> const {name, age} =  {...myobj};
     // const myarr = [1,2,3,4]  -> const [a,b,c,d] = [...myarr];
   }

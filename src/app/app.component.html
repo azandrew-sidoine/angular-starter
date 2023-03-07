@@ -2,15 +2,15 @@
 </app-topbar>
 <app-card-container>
     <!--  -->
-    <app-card [title]="state.title" (click)="onCardClicked($event)" (titleChange)="onTitleChange($event)" [scale]="1.2">
+    <app-card id="myCard" [title]="state.title" (click)="onCardClicked($event)" (titleChange)="onTitleChange($event)">
         <h5 [ngStyle] [ngStyle]="state.titleStyle" [ngClass]="state.titleClass" (click)="incrementClickCount()" class="card-title">Todos</h5>
-        <p *showIfClickEven="state.clickCount" (click)="incrementClickCount()" class="card-text">{{ state.cardContent }}</p>
-        <button [scale]="1.1" [orientation]="'x'" [disabled]="" type="button" (click)="onCardClicked($event)"
+        <p *showIfClickEven="state.clickCount" class="card-text">{{ state.cardContent }}</p>
+        <button [disabled]="" type="button" (click)="onCardClicked($event)"
             class="btn btn-primary">SOUMETTRE</button>
     </app-card>
 </app-card-container>
 
-<!-- <app-card-container>
+<app-card-container>
     <h2>Directrives structurels</h2>
     <h4>NgIf</h4>
     <app-card [hidden]="state.index !== 0">
@@ -48,4 +48,4 @@
         </ng-container>
     </ng-container>
 
-</app-card-container> -->
+</app-card-container>

@@ -96,20 +96,20 @@ export class AppComponent
 
   onCardClicked(event: Event) {
     // window.alert('Hello World! I am clicked!');
-    // const index = Math.floor(Math.random() * (COLORS.length - 0) + 0);
-    // const color = COLORS[index];
-    // this.setState({
-    //   backgroundColor: color,
-    //   titleClass: { [`title-${color}`]: true },
-    //   titleStyle: { color },
-    //   index,
-    // });
+    const index = Math.floor(Math.random() * (COLORS.length - 0) + 0);
+    const color = COLORS[index];
+    this.setState({
+      backgroundColor: color,
+      titleClass: { [`title-${color}`]: true },
+      titleStyle: { color },
+      index,
+    });
 
-    // this.setState((state) => ({
-    //   ...state,
-    //   backgroundColor: COLORS[Math.floor(Math.random() * (2 - 0) + 0)],
-    //   titleClass: {...state.titleClass, backgroundHeader: !state.titleClass.backgroundHeader}
-    // }));
+    this.setState((state) => ({
+      ...state,
+      backgroundColor: COLORS[Math.floor(Math.random() * (2 - 0) + 0)],
+      titleClass: {...state.titleClass, backgroundHeader: !state.titleClass['backgroundHeader']}
+    }));
     // this.backgroundColor = COLORS[Math.floor(Math.random() * (2 - 0) + 0)];
     event.preventDefault();
   }

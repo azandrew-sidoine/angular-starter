@@ -18,16 +18,21 @@ function getScaleProperty(orientation: string, scale: number) {
 }
 
 @Directive({
-  selector: '[scale]',
+  selector: '[scale]', // [nomDirective]
 })
 export class ScaleDirective implements OnInit {
   // #region
-  @Input('scale') scale: number = 1;
+  @Input('size') scale: number = 1.2;
   @Input() orientation: 'y' | 'x' | 'b' = 'b';
   // #endregion
 
   @HostListener('mouseenter')
   mouseOverListener(event: Event) {
+    /**
+     * .el:hover {
+     *    transform: scale(3)
+     * }
+     */
     this.el.nativeElement.style.transform = getScaleProperty(
       this.orientation,
       this.scale

@@ -19,8 +19,8 @@ import {
 })
 export class ShowIfClickedEvenDirective {
   // #region Directive internal state
-  @Input() set showIfClickEven(count: number) {
-    this.updateUI(count);
+  @Input() set showIfClickEven(count: number|string) {
+    this.updateUI(Number(count));
   }
   // #endregion Directive inteernal state
 
@@ -35,8 +35,8 @@ export class ShowIfClickedEvenDirective {
    *  Creates directive instance
    */
   constructor(
-    private viewRef: ViewContainerRef,
-    private templateRef: TemplateRef<any>
+    private viewRef: ViewContainerRef, // <div><p>...</p></div>
+    private templateRef: TemplateRef<any> // <p>....</p>
   ) {}
 
   private updateUI(count: number) {
